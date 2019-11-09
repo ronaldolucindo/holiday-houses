@@ -1,19 +1,18 @@
 export const Types = {
-  SEARCH_HOUSES_REQUEST: 'houses/seach_houses_request',
-  SEARCH_HOUSES_SUCCESS: 'houses/search_houses_success'
+  GET_HOUSES_REQUEST: 'houses/get_houses_request',
+  GET_HOUSES_SUCCESS: 'houses/get_houses_success'
 };
 
-export const searchHousesRequest = term => ({
-  type: Types.SEARCH_HOUSES_REQUEST,
+export const getHousesRequest = term => ({
+  type: Types.GET_HOUSES_REQUEST,
   payload: {
     term
   }
 });
 
-export const searchHousesSuccess = data => ({
-  type: Types.SEARCH_HOUSES_SUCCESS,
+export const getHousesSuccess = data => ({
+  type: Types.GET_HOUSES_SUCCESS,
   payload: {
-    term: data.term,
     houses: data.houses
   }
 });

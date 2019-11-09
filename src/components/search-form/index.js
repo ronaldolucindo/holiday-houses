@@ -11,13 +11,12 @@ function SearchForm(props) {
   const { value, onChange, onSubmit } = props;
 
   return (
-    <Paper component="form" className="search-form-container">
+    <Paper component="form" className="search-form-container" onSubmit={onSubmit}>
       <InputBase
         className="search-form-input"
         placeholder="Where do you want to go?"
         value={value}
         onChange={onChange}
-        onSubmit={onSubmit}
         inputProps={{ 'aria-label': 'Where do you want to go?' }}
       />
       <IconButton type="submit" color="primary" aria-label="search">

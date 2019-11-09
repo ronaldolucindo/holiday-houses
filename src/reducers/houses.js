@@ -1,15 +1,13 @@
 import { Types } from '../actions/houses';
 
-const initialState = () => ({
-  searchTerm: '',
+const initialState = {
   houses: {}
-});
+};
 
 function housesReducer(state = initialState, action) {
   switch (action.type) {
-    case Types.SEARCH_HOUSES_SUCCESS:
+    case Types.GET_HOUSES_SUCCESS:
       return { 
-        searchTerm: action.payload.term,
         houses: action.payload.houses
       };
 
