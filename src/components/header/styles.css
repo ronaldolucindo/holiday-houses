@@ -1,0 +1,40 @@
+.header-container {
+  width: 100%;
+}
+.header-container .header-title {
+  color: var(--white);
+  flex-grow: 1;
+  text-decoration: none;
+}
+
+.header-container .header-title:hover {
+  text-decoration: underline;
+}
+.header-container .search-container {
+  position: relative;
+  margin-left: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.header-container .search-container:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.header-container .input-root {
+  color: inherit;
+}
+.header-container .input-input {
+  width: 100%;
+  padding: 8px 16px 8px 32px;
+}
+
+.header-container .search-icon {
+  width: 32px;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
