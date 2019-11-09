@@ -1,19 +1,21 @@
-import { takeLatest, call, fork } from 'redux-saga/effects';
+import { takeLatest, call, fork, put } from 'redux-saga/effects';
 import * as actions from 'actions/houses';
 import * as Api from 'api/holiday-houses';
 
-function* searchHouses({payload}) {
+function* getHouses({ payload }) {
   try {
-    const result = yield call(Api.searchHouses, payload.term);
-    console.log(result);
+    const result = yield call(Api.getHouses, payload.term);
+    yield put(actions.getHousesSuccess({
+      houses: result.data
+    }));
   } catch (err) {
     console.error(err);
   }
 }
-function* watchSearchRequest() {
-  yield takeLatest(actions.Types.SEARCH_HOUSES_REQUEST, searchHouses);
+function* watchGetHousesRequest() {
+  yield takeLatest(actions.Types.GET_HOUSES_REQUEST, getHouses);
 }
 
-const HousesSagas = [fork(watchSearchRequest)];
+const HousesSagas = [fork(watchGetHousesRequest)];
 
 export default HousesSagas;
