@@ -68,6 +68,9 @@
 }
 
 @media (max-width: 768px) {
+  .house-card {
+    margin: 32px 16px;
+  }
   .house-card .card-contend {
     width: 100%;
     flex-direction: column;

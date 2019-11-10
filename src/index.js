@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-// import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Routes from './routes';
 import reducers from './reducers';
@@ -16,14 +16,16 @@ import * as serviceWorker from './serviceWorker';
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSagas);
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
-  // <ThemeProvider>
+  <ThemeProvider theme={theme}>
   <Provider store={store}>
     <CssBaseline />
     <Routes />
-  </Provider>,
-  // </ThemeProvider>,
+  </Provider>
+  </ThemeProvider>,
   document.getElementById('root')
 );
 
