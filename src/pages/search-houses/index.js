@@ -16,6 +16,9 @@ function SearchHouses(props) {
 
   const handleSearchSubmit = e => {
     e.preventDefault();
+    if (!searchTerm.trim()) {
+      return;
+    }
     const searchParam = encodeURI(searchTerm);
     history.push(`/search/${searchParam}`);
   };
