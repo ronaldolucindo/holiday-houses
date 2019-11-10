@@ -49,47 +49,48 @@ function HouseCard(props) {
               </Typography>
             </Typography>
           </div>
-          <ul className="house-details">
-            {details.apartmentTypeTitle && (
-              <li>
-                <HouseIcon /> {details.apartmentTypeTitle}
-              </li>
-            )}
-            {details.area && <li><ZoomOutMapIcon /> {details.area.value} sq. ft.</li>}
-            {details.bedroomsCount && (
-              <li>
-                <MeetingRoomIcon /> {details.bedroomsCount} bedrooms
-              </li>
-            )}
-            {details.guestsCount && (
-              <li>
-                <PeopleIcon /> {details.guestsCount} guests
-              </li>
-            )}
-          </ul>
-          <div className="cta-container">
-          <img
-            alt={provider.shortName}
-            src={provider.logoUrl}
-            variant="square"
-            className="house-provider"
-          />
-          <Button
-            color="primary"
-            variant="contained"
-            href={getFullLink(link)}
-            target="_blank"
-            rel="noopener"
-          >
-            View Offer
-          </Button>
+          <div className="house-group-container">
+            <ul className="house-details">
+              {details.apartmentTypeTitle && (
+                <li>
+                  <HouseIcon /> {details.apartmentTypeTitle}
+                </li>
+              )}
+              {details.area && (
+                <li>
+                  <ZoomOutMapIcon /> {details.area.value} sq. ft.
+                </li>
+              )}
+              {details.bedroomsCount && (
+                <li>
+                  <MeetingRoomIcon /> {details.bedroomsCount} bedrooms
+                </li>
+              )}
+              {details.guestsCount && (
+                <li>
+                  <PeopleIcon /> {details.guestsCount} guests
+                </li>
+              )}
+            </ul>
+            <div className="cta-container">
+              <img
+                title={provider.shortName}
+                alt={provider.shortName}
+                src={provider.logoUrl}
+                variant="square"
+                className="house-provider"
+              />
+              <Button
+                color="primary"
+                variant="contained"
+                href={getFullLink(link)}
+                target="_blank"
+                rel="noopener"
+              >
+                View Offer
+              </Button>
+            </div>
           </div>
-          <Divider light />
-
-          {/* <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography> */}
         </div>
       </CardContent>
     </Card>
