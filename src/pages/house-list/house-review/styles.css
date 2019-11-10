@@ -1,0 +1,8 @@
+.house-review-container {
+  display: flex;
+  align-items: center;
+}
+
+.house-review-container .reviews-counter {
+  margin: 0 8px;
+}
