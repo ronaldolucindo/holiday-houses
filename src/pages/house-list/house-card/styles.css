@@ -19,9 +19,22 @@
 
 .house-card .card-text-container {
   margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .house-card .image-gallery-image img {
   height: 300px;
   object-fit: contain;
+}
+
+.house-card .card-sumary {
+  display: flex;
+  align-items: center;
+  margin: 0 0 32px 0;
+}
+
+.house-card .house-provider {
+  width: 80px;
 }

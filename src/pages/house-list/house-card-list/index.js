@@ -13,6 +13,7 @@ function HouseCardList({ houses }) {
           details={item.details}
           photos={item.photos}
           price={item.price}
+          provider={item.provider}
           rating={item.rating}
         />
       ))}
@@ -27,6 +28,7 @@ HouseCardList.propType = {
       details: PropTypes.object,
       photos: PropTypes.array,
       price: PropTypes.object,
+      provider: PropTypes.object,
       rating: PropTypes.object
     })
   )

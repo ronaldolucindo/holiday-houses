@@ -17,7 +17,7 @@ function HouseReview({ count, rating }) {
         precision={0.5}
         readOnly
       />
-      <span className="reviews-counter">{count} reviews</span>
+      <span className="reviews-counter">({count})</span>
     </div>
   );
 }
