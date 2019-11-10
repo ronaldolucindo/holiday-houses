@@ -6,5 +6,5 @@ const holidayHouses = axios.create({
 
 export function getHouses(term) {
   const encodedTerm = encodeURI(term);
-  return holidayHouses.get(`/search/offers?searchTerm=${encodedTerm}`);
+  return holidayHouses.get(`/search/offers?searchTerm=${encodedTerm}&locale=en`);
 }
