@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getHousesRequest } from 'actions/houses';
 import { searchHouses } from 'actions/search';
 import Header from 'components/header';
+import HouseCardList from './house-card-list';
 
 function HouseList(props) {
   const {
@@ -40,13 +41,13 @@ function HouseList(props) {
         onInputChange={handleSearchInputChange}
         onSubmit={handleSearchSubmit}
       />
-      <p>HouseList</p>
+      <HouseCardList houses={data.offers} />
     </>
   );
 }
 
 const mapStateToProps = state => ({
-  data: state.houses,
+  data: state.houses.houses,
   searchTerm: state.search.searchTerm
 });
 

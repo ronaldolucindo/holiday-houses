@@ -1,0 +1,27 @@
+@import '~react-image-gallery/styles/css/image-gallery.css';
+
+.house-card {
+  margin: 32px;
+}
+
+.house-card .card-image {
+  background: #000;
+}
+
+.house-card .card-contend {
+  display: flex;
+}
+
+.house-card .image-gallery {
+  width: 100%;
+  max-width: 400px;
+}
+
+.house-card .card-text-container {
+  margin-left: 32px;
+}
+
+.house-card .image-gallery-image img {
+  height: 300px;
+  object-fit: contain;
+}
