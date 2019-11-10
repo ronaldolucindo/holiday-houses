@@ -5,15 +5,18 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ImageGallery from 'react-image-gallery';
-import Chip from '@material-ui/core/Chip';
-import Avatar from '@material-ui/core/Avatar';
-import { formatCurrency } from 'utils';
+import Divider from '@material-ui/core/Divider';
+import HouseIcon from '@material-ui/icons/House';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import PeopleIcon from '@material-ui/icons/People';
+import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
+import { formatCurrency, getFullLink } from 'utils';
 
 import './styles.css';
 import HouseReview from '../house-review';
 
 function HouseCard(props) {
-  const { details, photos, price, provider, rating } = props;
+  const { details, photos, price, provider, rating, link } = props;
 
   const images = photos.map(item => ({
     thumbnail: item.t,
@@ -31,7 +34,6 @@ function HouseCard(props) {
           showThumbnails={false}
           showPlayButton={false}
           showIndex={true}
-          //   showBullets={true}
           showFullscreenButton={false}
         />
         <div className="card-text-container">
@@ -39,28 +41,51 @@ function HouseCard(props) {
             {details.name}
           </Typography>
           <div className="card-sumary">
-            {details.area && <span>{details.area.value}m² • </span>}
+            <HouseReview count={rating.count} rating={rating.value} />
+            <Typography gutterBottom variant="h6" component="span">
+              {formatCurrency(price.currency, price.daily)}
+              <Typography variant="subtitle1" component="span">
+                / night
+              </Typography>
+            </Typography>
+          </div>
+          <ul className="house-details">
+            {details.apartmentTypeTitle && (
+              <li>
+                <HouseIcon /> {details.apartmentTypeTitle}
+              </li>
+            )}
+            {details.area && <li><ZoomOutMapIcon /> {details.area.value} sq. ft.</li>}
             {details.bedroomsCount && (
-              <span>{details.bedroomsCount} bedrooms • </span>
+              <li>
+                <MeetingRoomIcon /> {details.bedroomsCount} bedrooms
+              </li>
             )}
             {details.guestsCount && (
-              <span>{details.guestsCount} guests • </span>
+              <li>
+                <PeopleIcon /> {details.guestsCount} guests
+              </li>
             )}
-            <HouseReview count={rating.count} rating={rating.value} />
-          </div>
-          <Chip
-            className="card-chip"
-            color="primary"
-            label={details.apartmentTypeTitle}
-            variant="outlined"
-          />
+          </ul>
+          <div className="cta-container">
           <img
             alt={provider.shortName}
             src={provider.logoUrl}
             variant="square"
             className="house-provider"
           />
-          <p>{formatCurrency(price.currency, price.daily)}</p>
+          <Button
+            color="primary"
+            variant="contained"
+            href={getFullLink(link)}
+            target="_blank"
+            rel="noopener"
+          >
+            View Offer
+          </Button>
+          </div>
+          <Divider light />
+
           {/* <Typography variant="body2" color="textSecondary" component="p">
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
@@ -77,7 +102,8 @@ HouseCard.propType = {
   photos: PropTypes.array,
   price: PropTypes.object,
   provider: PropTypes.object,
-  rating: PropTypes.object
+  rating: PropTypes.object,
+  link: PropTypes.string
 };
 
 export default HouseCard;

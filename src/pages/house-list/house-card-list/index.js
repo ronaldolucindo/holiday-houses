@@ -15,6 +15,7 @@ function HouseCardList({ houses }) {
           price={item.price}
           provider={item.provider}
           rating={item.rating}
+          link={item.outboundLink || item.outboundLinkV2}
         />
       ))}
     </div>
@@ -29,7 +30,9 @@ HouseCardList.propType = {
       photos: PropTypes.array,
       price: PropTypes.object,
       provider: PropTypes.object,
-      rating: PropTypes.object
+      rating: PropTypes.object,
+      outboundLink: PropTypes.string,
+      outboundLinkV2: PropTypes.string
     })
   )
 };
