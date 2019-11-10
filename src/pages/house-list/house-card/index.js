@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ImageGallery from 'react-image-gallery';
-import Divider from '@material-ui/core/Divider';
 import HouseIcon from '@material-ui/icons/House';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import PeopleIcon from '@material-ui/icons/People';

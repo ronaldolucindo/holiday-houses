@@ -24,7 +24,7 @@ function HouseList(props) {
   useEffect(() => {
     getHousesRequest(match.params.term);
     searchHouses(match.params.term);
-  }, [match.params.term]);
+  }, [match.params.term, getHousesRequest, searchHouses]);
 
   const handleSearchInputChange = e => {
     searchHouses(e.target.value);
