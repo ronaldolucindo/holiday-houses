@@ -1,0 +1,35 @@
+.house-list {
+  width: 100%;
+}
+.house-list .main-container {
+  width: 100%;
+}
+
+.house-list .main-loader {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  top: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+}
+
+.house-list .error-message {
+  width: 200px;
+  height: 120px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  margin-top: -60px;
+  margin-left: -100px;
+}
+
+.house-list .error-message svg {
+  width: 64px;
+  height: 64px;
+}

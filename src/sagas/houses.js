@@ -4,11 +4,15 @@ import * as Api from 'api/holiday-houses';
 
 function* getHouses({ payload }) {
   try {
+    yield put(actions.getHousesLoading());
     const result = yield call(Api.getHouses, payload.term);
-    yield put(actions.getHousesSuccess({
-      houses: result.data
-    }));
+    yield put(
+      actions.getHousesSuccess({
+        houses: result.data
+      })
+    );
   } catch (err) {
+    yield put(actions.getHousesError());
     console.error(err);
   }
 }

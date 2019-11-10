@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import { getHousesRequest } from 'actions/houses';
 import { searchHouses } from 'actions/search';
 import Header from 'components/header';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Typography from '@material-ui/core/Typography';
+import ErrorIcon from '@material-ui/icons/Error';
 import HouseCardList from './house-card-list';
+
+import './styles.css';
 
 function HouseList(props) {
   const {
@@ -35,19 +40,34 @@ function HouseList(props) {
   };
 
   return (
-    <>
+    <div className="house-list">
       <Header
         searchTerm={searchTerm}
         onInputChange={handleSearchInputChange}
         onSubmit={handleSearchSubmit}
       />
-      <HouseCardList houses={data.offers} />
-    </>
+      <main className="main-container">
+        {data.fetching && (
+          <CircularProgress size={60} className="main-loader" />
+        )}
+        {data.error && data.fetched && (
+          <div className="error-message">
+            <ErrorIcon />
+            <Typography gutterBottom variant="h6" component="p">
+              error loading data
+            </Typography>
+          </div>
+        )}
+        {!data.fetching && !data.error && data.fetched && (
+          <HouseCardList houses={data.houses.offers} />
+        )}
+      </main>
+    </div>
   );
 }
 
 const mapStateToProps = state => ({
-  data: state.houses.houses,
+  data: state.houses,
   searchTerm: state.search.searchTerm
 });
 
