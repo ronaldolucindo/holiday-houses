@@ -13,3 +13,12 @@ export function formatCurrency(currencyCode, value) {
     minimumFractionDigits: 2
   }).format(value);
 }
+
+/**
+ * Append domain name to a relative path
+ * @param {string} path relative path.
+ * @returns {string} full path link.
+ */
+export function getFullLink(path) {
+  return `https://www.holidu.com${path}`;
+}
