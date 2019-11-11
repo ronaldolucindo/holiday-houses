@@ -5,10 +5,11 @@ import * as Api from 'api/holiday-houses';
 function* getHouses({ payload }) {
   try {
     yield put(actions.getHousesLoading());
-    const result = yield call(Api.getHouses, payload.term);
+    const result = yield call(Api.getHouses, payload.term, payload.index);
     yield put(
       actions.getHousesSuccess({
-        houses: result.data
+        houses: result.data,
+        index: payload.index
       })
     );
   } catch (err) {

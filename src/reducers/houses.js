@@ -2,6 +2,7 @@ import { Types } from '../actions/houses';
 
 const initialState = {
   houses: {},
+  index: 0,
   fetching: false,
   fetched: false,
   error: false
@@ -12,12 +13,14 @@ function housesReducer(state = initialState, action) {
     case Types.GET_HOUSES_LOADING:
       return {
         ...state,
-        fetching: true
+        fetching: true,
+        fetched: false
       };
     case Types.GET_HOUSES_SUCCESS:
       return {
         ...state,
         houses: action.payload.houses,
+        index: action.payload.index,
         fetched: true,
         fetching: false
       };

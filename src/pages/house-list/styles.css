@@ -5,6 +5,18 @@
   width: 100%;
 }
 
+.house-list .house-list-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.house-list .total-results {
+  text-align: right;
+  margin: 16px 32px;
+}
+
 .house-list .main-loader {
   position: fixed;
   width: 60px;
@@ -32,4 +44,9 @@
 .house-list .error-message svg {
   width: 64px;
   height: 64px;
+}
+
+.house-list .load-more-btn {
+  display: block;
+  margin: 16px auto;
 }

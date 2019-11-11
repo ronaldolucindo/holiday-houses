@@ -8,6 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import ErrorIcon from '@material-ui/icons/Error';
 import HouseCardList from './house-card-list';
+import Button from '@material-ui/core/Button';
 
 import './styles.css';
 
@@ -39,6 +40,14 @@ function HouseList(props) {
     history.push(`/search/${searchParam}`);
   };
 
+  const hasMoreResults =
+    !!data.houses.metaData &&
+    data.houses.metaData.cursor.totalCount > (data.index + 1) * 10;
+
+  const handleLoadMoreClick = () => {
+    getHousesRequest(match.params.term, data.index + 1);
+  };
+
   return (
     <div className="house-list">
       <Header
@@ -59,7 +68,30 @@ function HouseList(props) {
           </div>
         )}
         {!data.fetching && !data.error && data.fetched && (
-          <HouseCardList houses={data.houses.offers} />
+          <>
+            <section className="house-list-top">
+              <Typography className="total-results" variant="h3" component="h1">
+                {data.houses.metaData.searchRegion.name}
+              </Typography>
+              <Typography
+                className="total-results"
+                variant="subtitle1"
+                component="p"
+              >
+                {data.houses.metaData.cursor.totalCount} accommodations found
+              </Typography>
+            </section>
+            <HouseCardList houses={data.houses.offers} />
+            {hasMoreResults && (
+              <Button
+                variant="contained"
+                className="load-more-btn"
+                onClick={handleLoadMoreClick}
+              >
+                load more
+              </Button>
+            )}
+          </>
         )}
       </main>
     </div>

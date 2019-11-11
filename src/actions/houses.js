@@ -5,10 +5,11 @@ export const Types = {
   GET_HOUSES_ERROR: 'houses/get_houses_error'
 };
 
-export const getHousesRequest = term => ({
+export const getHousesRequest = (term, index = 0) => ({
   type: Types.GET_HOUSES_REQUEST,
   payload: {
-    term
+    term,
+    index
   }
 });
 
@@ -19,7 +20,8 @@ export const getHousesLoading = () => ({
 export const getHousesSuccess = data => ({
   type: Types.GET_HOUSES_SUCCESS,
   payload: {
-    houses: data.houses
+    houses: data.houses,
+    index: data.index
   }
 });
 
